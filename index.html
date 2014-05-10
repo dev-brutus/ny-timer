@@ -6,12 +6,14 @@
 </head>
 <body>
 <div class="main-block">
+    <div class="top-block">&nbsp;</div>
     <div class="info-block">
-        <span class="ny-label">The <span id="year-filed"></span> in: <span id="time-filed"></span></span>
+        <span class="ny-label" id="counter-label">The <span class="year-filed"></span> in <span id="time-filed"></span></span>
+        <span class="ny-label" id="greetings-label">Happy New Year!!!<br/> <span class="year-filed"></span></span>
     </div>
 </div>
 
-<!--<script src="jquery-1.11.1.min.js"></script>-->
+<script src="jquery-1.11.1.min.js"></script>
 
 <script>
     function TimeInfo() {
@@ -56,8 +58,16 @@
 
     function doTime() {
         var timeInfo = new TimeInfo();
-        document.getElementById("time-filed").textContent = timeInfo.toStr();
-        document.getElementById("year-filed").textContent = timeInfo.yearInfo.newYear;
+        $("#time-filed").text(timeInfo.toStr());
+        $(".year-filed").text(timeInfo.yearInfo.newYear);
+
+        if (timeInfo.yearInfo.isZero) {
+            $("#counter-label").hide();
+            $("#greetings-label").show();
+        } else {
+            $("#counter-label").show();
+            $("#greetings-label").hide();
+        }
         setTimeout("doTime();", 100);
     }
 
