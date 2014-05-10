@@ -1,5 +1,71 @@
+<!doctype html>
 <html>
+<head>
+    <title>New Year Timer</title>
+    <link rel="stylesheet" type="text/css" href="timer.css"/>
+</head>
 <body>
-<h1>Hello world!</h1>
+<div class="main-block">
+    <div class="info-block">
+        <span class="ny-label">Time left:</span>
+        <span class="ny-time" id="time-filed"></span>
+    </div>
+</div>
+
+<script src="jquery-1.11.1.min.js"></script>
+
+<script>
+    function TimeInfo() {
+        this.hours = 0;
+        this.minutes = 0;
+        this.seconds = 0;
+
+        this.toStr = function () {
+            return [this.hours, this.minutes, this.seconds].map(function (v) {
+                return toTxt(v)
+            }).join(":")
+        };
+
+        function toTxt(a) {
+            if (a < 10) return "0" + a;
+            return "" + a;
+        }
+
+        function fetchCurrentAndNextYear() {
+            var now = new Date;
+            return {
+                current: now,
+                next: new Date(now.getFullYear() + 1, 0, 1),
+                isZero: now.getMonth() == 0
+            }
+        }
+
+        var yearInfo = fetchCurrentAndNextYear();
+
+        if (!yearInfo.isZero) {
+            var diff = Math.ceil((yearInfo.next.getTime() - yearInfo.current.getTime()) / 1000);
+
+            if (diff > 0) {
+                this.hours = Math.floor(diff / 3600);
+                var hours_ms = this.hours * 3600;
+                this.minutes = Math.floor((diff - hours_ms) / 60);
+                var minutes_ms = hours_ms + this.minutes * 60;
+                this.seconds = diff - minutes_ms;
+            }
+        }
+    }
+
+    function doTime() {
+        var hms = new TimeInfo();
+        var message = hms.toStr();
+
+        $("#time-filed").text(message);
+        setTimeout("doTime();", 100);
+    }
+
+    $(document).ready(function () {
+        doTime();
+    });
+</script>
 </body>
 </html>
