@@ -7,23 +7,21 @@
 <body>
 <div class="main-block">
     <div class="info-block">
-        <span class="ny-label">Time left:</span>
-        <span class="ny-time" id="time-filed"></span>
+        <span class="ny-label">The <span id="year-filed"></span> in: <span id="time-filed"></span></span>
     </div>
 </div>
 
-<script src="jquery-1.11.1.min.js"></script>
+<!--<script src="jquery-1.11.1.min.js"></script>-->
 
 <script>
     function TimeInfo() {
         this.hours = 0;
         this.minutes = 0;
         this.seconds = 0;
+        this.yearInfo = fetchCurrentAndNextYear();
 
         this.toStr = function () {
-            return [this.hours, this.minutes, this.seconds].map(function (v) {
-                return toTxt(v)
-            }).join(":")
+            return [this.hours, this.minutes, this.seconds].map(toTxt).join(":")
         };
 
         function toTxt(a) {
@@ -32,18 +30,19 @@
         }
 
         function fetchCurrentAndNextYear() {
-            var now = new Date;
+            var current = new Date;
+            var fullYear = current.getFullYear();
+            var isZero = current.getMonth() == 0;
             return {
-                current: now,
-                next: new Date(now.getFullYear() + 1, 0, 1),
-                isZero: now.getMonth() == 0
+                current: current,
+                isZero: isZero,
+                next: new Date(fullYear + 1, 0, 1),
+                newYear: isZero ? fullYear : (fullYear + 1)
             }
         }
 
-        var yearInfo = fetchCurrentAndNextYear();
-
-        if (!yearInfo.isZero) {
-            var diff = Math.ceil((yearInfo.next.getTime() - yearInfo.current.getTime()) / 1000);
+        if (!this.yearInfo.isZero) {
+            var diff = Math.ceil((this.yearInfo.next.getTime() - this.yearInfo.current.getTime()) / 1000);
 
             if (diff > 0) {
                 this.hours = Math.floor(diff / 3600);
@@ -56,16 +55,13 @@
     }
 
     function doTime() {
-        var hms = new TimeInfo();
-        var message = hms.toStr();
-
-        $("#time-filed").text(message);
+        var timeInfo = new TimeInfo();
+        document.getElementById("time-filed").textContent = timeInfo.toStr();
+        document.getElementById("year-filed").textContent = timeInfo.yearInfo.newYear;
         setTimeout("doTime();", 100);
     }
 
-    $(document).ready(function () {
-        doTime();
-    });
+    doTime();
 </script>
 </body>
 </html>
