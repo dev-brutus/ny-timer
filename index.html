@@ -6,10 +6,15 @@
 </head>
 <body>
 <div class="main-block">
-    <div class="top-block">&nbsp;</div>
-    <div class="info-block">
-        <span class="ny-label" id="counter-label">The <span class="year-filed"></span> in <span id="time-filed"></span></span>
-        <span class="ny-label" id="greetings-label">Happy New Year!!!<br/> <span class="year-filed"></span></span>
+    <div id="middle-block">
+        <div id="info-block">
+                <span class="ny-label" id="counter-label">
+                    The <span class="year-filed"></span> will be in <span id="time-filed"></span>
+                </span>
+                <span class="ny-label" id="greetings-label">
+                    Happy New Year!!!<br/> <span class="year-filed"></span>
+                </span>
+        </div>
     </div>
 </div>
 
@@ -17,7 +22,7 @@
 <script src="timer.js"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         document['nyTimerProcessor'] = new NyTimerProcessor();
     });
 </script>

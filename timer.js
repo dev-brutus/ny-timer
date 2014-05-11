@@ -9,8 +9,7 @@ function TimeInfo() {
     };
 
     function toTxt(a) {
-        if (a < 10) return "0" + a;
-        return "" + a;
+        return (a < 10 ? "0" : "") + a;
     }
 
     function fetchCurrentAndNextYear() {
