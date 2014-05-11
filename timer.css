@@ -25,6 +25,8 @@ body {
 }
 
 .ny-label {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
-
+.blink {
+    /*color: #ffdd00*/
+}
