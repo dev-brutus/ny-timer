@@ -48,7 +48,6 @@ function NyTimerProcessor() {
         };
     };
 
-
     this.countdownState = function () {
         if (this.isNewYear) {
             return this.switchToGreetingsState;
@@ -58,7 +57,7 @@ function NyTimerProcessor() {
             if (this.isUpdate) {
                 $("#time-filed").text(this.timeValue);
 
-                if (this.timeInfo.diff < 300) {
+                if (this.timeInfo.diff < 60) {
                     var blink = $(".blink");
                     blink.hide().fadeIn(600);
                 }
