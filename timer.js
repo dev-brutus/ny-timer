@@ -5,8 +5,8 @@ function TimeInfo() {
     this.current = new Date();
 
     var fullYear = this.current.getFullYear();
-    this.next = new Date(fullYear + 1, 0, 1);
-    this.isNewYear = this.current < new Date(fullYear, 0, 16);
+    this.next = new Date(fullYear + 1, 0, 1);  // NY date
+    this.isNewYear = this.current < new Date(fullYear, 0, 16); // Timer start date
     this.year = this.isNewYear ? fullYear : 1 + fullYear;
 
     this.toStr = function () {
