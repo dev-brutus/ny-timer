@@ -1,23 +1,17 @@
 body {
-    font-family: Helvetica,sans-serif;
-    font-weight: bolder;
-    font-size: 72pt;
-    background-color: #fff;
+  font-family: Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 72pt;
+  background-color: #fff;
 }
 
 .main-block {
-    text-align: center;
-    vertical-align: middle;
+  display: flex;
+  min-height: 100vh;
 }
 
 #middle-block {
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    width:14em;
-    height:2em;
-    margin-left: -7em; /*set to a negative number 1/2 of your width*/
-    margin-top: -1em; /*set to a negative number 1/2 of your height*/
+  margin: auto;
 }
 
 #info-block {
@@ -25,8 +19,16 @@ body {
 }
 
 .ny-label {
-    /*text-decoration: underline;*/
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: baseline;
 }
-.blink {
-    /*color: #ffdd00*/
+.ny-label > div:not(:last-child) {
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+.ny-label > .prefix-text,
+.ny-label > .suffix-text {
+  font-size: 54px;
 }
