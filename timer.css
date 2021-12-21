@@ -5,17 +5,14 @@ body {
   background-color: #fff;
 }
 
-.main-block {
+#main-block {
   display: flex;
   min-height: 100vh;
+  color: #333;
 }
 
 #middle-block {
   margin: auto;
-}
-
-#info-block {
-  color: #333;
 }
 
 .ny-label {
@@ -26,9 +23,4 @@ body {
 }
 .ny-label > div:not(:last-child) {
   margin-right: 20px;
-  text-transform: uppercase;
-}
-.ny-label > .prefix-text,
-.ny-label > .suffix-text {
-  font-size: 54px;
 }
