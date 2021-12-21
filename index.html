@@ -1,30 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>New Year Timer</title>
-    <link rel="stylesheet" type="text/css" href="timer.css"/>
-</head>
-<body>
-<div class="main-block">
-    <div id="middle-block">
-        <div id="info-block">
-                <span class="ny-label" id="counter-label" style="display: none">
-                    The <span class="year-filed"></span> starts in <span id="time-filed" class="blink"></span>
-                </span>
-                <span class="ny-label" id="greetings-label" style="display: none">
-                    Happy New Year!!!<br/> <span class="year-filed"></span>
-                </span>
-        </div>
+    <link rel="stylesheet" type="text/css" href="timer.css" />
+  </head>
+  <body>
+    <div id="main-block">
+      <div id="middle-block">
+          <div class="ny-label" id="counter-label" style="display: none">
+            <div>The</div>
+            <div class="year-filed"></div>
+            <div>starts in</div>
+            <div id="time-filed" class="blink"></div>
+          </div>
+          <div class="ny-label" id="greetings-label" style="display: none">
+            <div>Happy New Year!!!</div>
+            <div class="year-filed"></div>
+          </div>
+      </div>
     </div>
-</div>
 
-<script src="jquery-1.11.1.min.js"></script>
-<script src="timer.js"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="timer.js"></script>
 
-<script>
-    $(document).ready(function () {
-        document['nyTimerProcessor'] = new NyTimerProcessor();
-    });
-</script>
-</body>
+    <script>
+      $(document).ready(function () {
+        document["nyTimerProcessor"] = new NyTimerProcessor();
+      });
+    </script>
+  </body>
 </html>
